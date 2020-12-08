@@ -14,7 +14,7 @@ module.exports = async (payload) => {
                subject1: dbResFind.subject1,
                subject2: dbResFind.subject2,
                subject3: dbResFind.subject3,
-
+               total: dbResFind.total,
             },
          },
       };

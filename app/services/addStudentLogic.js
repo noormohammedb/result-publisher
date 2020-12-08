@@ -4,12 +4,14 @@ const findStudentRegNum = require("../utils/findStudentRegNum");
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
    if (!dbResFind) {
+      const total = parseInt(payload.subject1) + parseInt(payload.subject2) + parseInt(payload.subject3)
       const newStudent = new StudentModel({
          name: payload.name,
          registerNumber: payload.registerNumber,
          subject1: payload.subject1,
          subject2: payload.subject2,
          subject3: payload.subject3,
+         total,
       });
       try {
          const dbRes = await newStudent.save();

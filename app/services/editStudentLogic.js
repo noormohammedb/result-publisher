@@ -4,13 +4,14 @@ const findStudentRegNum = require("../utils/findStudentRegNum");
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
    if (dbResFind) {
+      const total = parseInt(payload.subject1) + parseInt(payload.subject2) + parseInt(payload.subject3)
       console.log(dbResFind);
       try {
          const dbRes = await StudentModel.updateOne(
             { registerNumber: payload.registerNumber, isRemoved: false },
             {
                $set: {
-                  ...payload,
+                  ...payload, total
                },
             },
          );

@@ -11,6 +11,7 @@ const student = new mongoose.Schema(
       subject1: Number,
       subject2: Number,
       subject3: Number,
+      total: Number,
       isRemoved: {
          type: Boolean,
          default: false,
