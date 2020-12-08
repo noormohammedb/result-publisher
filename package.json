@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "apidoc": "apidoc -i ./app -o ./apidoc",
-    "test": "mocha tests/*.test.js",
+    "test": "mocha tests/*.test.js --full-trace -c --exit",
     "start": "node ./app/bin/www",
     "dev": "nodemon ./app/bin/www --inspect"
   },
@@ -22,10 +22,13 @@
   },
   "devDependencies": {
     "apidoc": "^0.25.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
     "prettier": "2.2.1"
   }
