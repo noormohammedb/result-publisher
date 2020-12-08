@@ -3,9 +3,24 @@ require("dotenv").config();
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
+const mongoose = require('mongoose');
 const cors = require("cors");
 
 const app = express();
+
+mongoose.connect(process.env.DB_URI,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  // we're connected!
+  console.log("database connected");
+});
 
 app.use(cors());
 app.use(logger("dev"));

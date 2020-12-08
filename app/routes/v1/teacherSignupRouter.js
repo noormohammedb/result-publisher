@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const signupProcess = require("../../services/teacherSignupLogic");
 
 /**
  * @api {post} /v1/signup signup route for teacher
@@ -7,9 +8,10 @@ const router = require("express").Router();
  *
  * @apiBody {Number} id Users unique ID.
  */
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
    console.log(req.body);
-   res.json({ bla: "blabla" });
+   const response = await signupProcess(req.body);
+   res.status(200).json({ response });
 });
 
 module.exports = router;
