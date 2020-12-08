@@ -9,6 +9,7 @@
     "dev": "nodemon ./app/bin/www --inspect"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
