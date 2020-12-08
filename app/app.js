@@ -12,7 +12,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', require('./routes/index'));
+app.use(require('./routes/'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,8 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var app = express();
 
-router.get("/", (req, res) => {
-  res.json({ message: "Hello World" })
-})
+app.use("/v1", require("./v1"))
 
-module.exports = router;
+app.all("*", (req, res) => {
+  res.status(400).json({ message: "Not Found route" });
+});
+
+module.exports = app;
