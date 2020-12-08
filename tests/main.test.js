@@ -37,7 +37,8 @@ const teacherSignup = "/v1/signup",
    teacherlogin = "/v1/login",
    addStudent = "/v1/add_student",
    showResult = "/v1",
-   editStudent = "/v1/edit_student";
+   editStudent = "/v1/edit_student",
+   deleteStudent = "/v1/delete_student";
 
 chai.use(chaiHttp);
 
@@ -181,6 +182,53 @@ describe("==>> Testing result publication system", () => {
                res.body.data.should.property("registerNumber", studentPayload.registerNumber);
                res.body.data.total.should.not.equal(totalMark);
                console.log(`==============================${res.body.data.total}==========================`);
+               done();
+            });
+      });
+   });
+
+   describe("==>> delete student record without logged in teacher", () => {
+      it(`requesting ${deleteStudent}`, (done) => {
+         chai.request(server)
+            .delete(deleteStudent)
+            .send({ registerNumber: studentPayload.registerNumber })
+            .end((err, res) => {
+               // if (err) throw err;
+               console.log(res.body);
+               res.status.should.eql(401);
+               res.body.should.property("status", false);
+               done();
+            });
+      });
+   });
+
+   describe("==>> delete student record with logged in teacher", () => {
+      it(`requesting ${deleteStudent}`, (done) => {
+         chai.request(server)
+            .delete(deleteStudent)
+            .set("Authorization", `bearar ${authToken}`)
+            .send({ registerNumber: studentPayload.registerNumber })
+            .end((err, res) => {
+               // if (err) throw err;
+               console.log(res.body);
+               res.status.should.eql(200);
+               res.body.should.property("status", true);
+               done();
+            });
+      });
+   });
+
+   describe("==>> check student record is deleted", () => {
+      it(`requesting ${showResult}`, (done) => {
+         chai.request(server)
+            .get(showResult)
+            .send({ registerNumber: studentPayload.registerNumber })
+            .end((err, res) => {
+               // if (err) throw err;
+               console.log(res.body);
+               res.status.should.eql(400);
+               res.body.should.property("status", false);
+               res.body.should.property("message").equal("register number not matched");
                done();
             });
       });
