@@ -1,18 +1,30 @@
 {
-   "name": "result-publish",
-   "version": "0.0.0",
-   "private": true,
-   "scripts": {
-      "apidoc": "apidoc -i -o",
-      "test": "mocha tests/*.test.js",
-      "start": "node ./app/bin/www",
-      "dev": "nodemon ./app/bin/www"
-   },
-   "dependencies": {
-      "debug": "~2.6.9",
-      "dotenv": "^8.2.0",
-      "express": "~4.16.1",
-      "http-errors": "~1.6.3",
-      "morgan": "~1.9.1"
-   }
+  "name": "result-publish",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "apidoc": "apidoc -i ./app -o ./apidoc",
+    "test": "mocha tests/*.test.js",
+    "start": "node ./app/bin/www",
+    "dev": "nodemon ./app/bin/www --inspect"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.5",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "apidoc": "^0.25.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6",
+    "prettier": "2.2.1"
+  }
 }
