@@ -6,11 +6,15 @@ const student = new mongoose.Schema(
       name: String,
       registerNumber: {
          type: Number,
-         unique: true
+         // unique: true
       },
       subject1: Number,
       subject2: Number,
-      subject3: Number
+      subject3: Number,
+      isRemoved: {
+         type: Boolean,
+         default: false,
+      }
    },
    { versionKey: false },
 );

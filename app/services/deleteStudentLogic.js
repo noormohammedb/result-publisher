@@ -2,35 +2,33 @@ const StudentModel = require("../models/studentModel")
 const findStudentRegNum = require("../utils/findStudentRegNum")
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
-   if (!dbResFind) {
-      const newStudent = new StudentModel({
-         name: payload.name,
-         registerNumber: payload.registerNumber,
-         subject1: payload.subject1,
-         subject2: payload.subject2,
-         subject3: payload.subject3,
-      });
+   if (dbResFind) {
       try {
-         const dbRes = await newStudent.save();
+         const dbRes = await StudentModel.updateOne(
+            { registerNumber: payload.registerNumber },
+            {
+               $set: { isRemoved: true }
+            }
+         );
          return {
             statusCode: 200,
             json: {
                status: true,
-               messae: "new student added successfully",
-               data: { id: dbRes._id },
+               messae: "student deleted successfully",
+               data: {},
             }
          };
       } catch (error) {
-         console.log("error in add student db operation");
+         console.log("error in delete student db operation");
          console.error(error);
       }
    } else {
-      console.log("student exist");
+      console.log("student not exist for delete");
       return {
          statusCode: 400,
          json: {
             status: false,
-            messae: "student exist",
+            messae: "student not exist",
             data: {},
          }
       };
