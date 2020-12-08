@@ -12,5 +12,4 @@ function signJwt(payload) {
    }
 }
 
-
 module.exports = { signJwt };

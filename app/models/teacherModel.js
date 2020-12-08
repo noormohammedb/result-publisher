@@ -4,7 +4,10 @@ const timestamps = require("mongoose-timestamp");
 const teacher = new mongoose.Schema(
    {
       name: String,
-      email: String,
+      email: {
+         type: String,
+         unique: true,
+      },
       password: String,
       isTeacher: Boolean,
    },
