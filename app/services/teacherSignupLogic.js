@@ -21,7 +21,7 @@ module.exports = async (payload) => {
                statusCode: 200,
                json: {
                   status: true,
-                  messae: "signup success",
+                  message: "signup success",
                   data: { token },
                },
             };
@@ -39,7 +39,7 @@ module.exports = async (payload) => {
          statusCode: 400,
          json: {
             status: false,
-            messae: "email exist",
+            message: "email exist",
             data: {},
          },
       };

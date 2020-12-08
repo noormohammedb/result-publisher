@@ -16,7 +16,7 @@ module.exports = async (payload) => {
             statusCode: 200,
             json: {
                status: true,
-               messae: "student deleted successfully",
+               message: "student deleted successfully",
                data: {},
             },
          };
@@ -30,7 +30,7 @@ module.exports = async (payload) => {
          statusCode: 400,
          json: {
             status: false,
-            messae: "student not exist",
+            message: "student not exist",
             data: {},
          },
       };

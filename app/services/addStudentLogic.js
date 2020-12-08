@@ -19,7 +19,7 @@ module.exports = async (payload) => {
             statusCode: 200,
             json: {
                status: true,
-               messae: "new student added successfully",
+               message: "new student added successfully",
                data: { id: dbRes._id },
             },
          };
@@ -33,7 +33,7 @@ module.exports = async (payload) => {
          statusCode: 400,
          json: {
             status: false,
-            messae: "student exist",
+            message: "student exist",
             data: {},
          },
       };

@@ -7,7 +7,7 @@ module.exports = async (payload) => {
          statusCode: 200,
          json: {
             status: true,
-            messae: "register number matched",
+            message: "register number matched",
             data: {
                name: dbResFind.name,
                registerNumber: dbResFind.registerNumber,
@@ -25,7 +25,7 @@ module.exports = async (payload) => {
          statusCode: 400,
          json: {
             status: false,
-            messae: "register number not matched",
+            message: "register number not matched",
             data: {},
          },
       };
