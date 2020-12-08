@@ -1,5 +1,6 @@
-const StudentModel = require("../models/studentModel")
-const findStudentRegNum = require("../utils/findStudentRegNum")
+const StudentModel = require("../models/studentModel");
+const findStudentRegNum = require("../utils/findStudentRegNum");
+
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
    if (dbResFind) {
@@ -7,16 +8,17 @@ module.exports = async (payload) => {
          const dbRes = await StudentModel.updateOne(
             { registerNumber: payload.registerNumber },
             {
-               $set: { isRemoved: true }
-            }
+               $set: { isRemoved: true },
+            },
          );
+         console.log(dbRes);
          return {
             statusCode: 200,
             json: {
                status: true,
                messae: "student deleted successfully",
                data: {},
-            }
+            },
          };
       } catch (error) {
          console.log("error in delete student db operation");
@@ -30,7 +32,8 @@ module.exports = async (payload) => {
             status: false,
             messae: "student not exist",
             data: {},
-         }
+         },
       };
    }
-}
+   return null;
+};

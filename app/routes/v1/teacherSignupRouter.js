@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       const response = await signupProcess(req.body);
       res.status(response.statusCode).json(response.json);
    } catch (error) {
-      res.status(500).json({ message: "no response" })
+      res.status(500).json({ message: "no response" });
    }
 });
 

@@ -14,7 +14,7 @@ const student = new mongoose.Schema(
       isRemoved: {
          type: Boolean,
          default: false,
-      }
+      },
    },
    { versionKey: false },
 );

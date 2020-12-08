@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const editStudent = require("../../services/editStudentLogic");
-const { verify } = require("../../middlewares/authJwt")
+const { verify } = require("../../middlewares/authJwt");
 
 /**
  * @api {patch} /v1/signup signup route for teacher
@@ -14,7 +14,7 @@ router.patch("/", verify, async (req, res) => {
       res.status(response.statusCode).json(response.json);
    } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "no response" })
+      res.status(500).json({ message: "no response" });
    }
 });
 

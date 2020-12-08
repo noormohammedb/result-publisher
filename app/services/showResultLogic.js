@@ -1,5 +1,5 @@
-const StudentModel = require("../models/studentModel")
-const findStudentRegNum = require("../utils/findStudentRegNum")
+const findStudentRegNum = require("../utils/findStudentRegNum");
+
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
    if (dbResFind) {
@@ -16,8 +16,9 @@ module.exports = async (payload) => {
                subject3: dbResFind.subject3,
 
             },
-         }
+         },
       };
+      // eslint-disable-next-line no-else-return
    } else {
       console.log("student not exist for result");
       return {
@@ -26,7 +27,7 @@ module.exports = async (payload) => {
             status: false,
             messae: "register number not matched",
             data: {},
-         }
+         },
       };
    }
-}
+};

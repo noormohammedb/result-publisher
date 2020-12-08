@@ -1,5 +1,6 @@
-const StudentModel = require("../models/studentModel")
-const findStudentRegNum = require("../utils/findStudentRegNum")
+const StudentModel = require("../models/studentModel");
+const findStudentRegNum = require("../utils/findStudentRegNum");
+
 module.exports = async (payload) => {
    const dbResFind = await findStudentRegNum(payload);
    if (!dbResFind) {
@@ -18,7 +19,7 @@ module.exports = async (payload) => {
                status: true,
                messae: "new student added successfully",
                data: { id: dbRes._id },
-            }
+            },
          };
       } catch (error) {
          console.log("error in add student db operation");
@@ -32,7 +33,8 @@ module.exports = async (payload) => {
             status: false,
             messae: "student exist",
             data: {},
-         }
+         },
       };
    }
-}
+   return null;
+};

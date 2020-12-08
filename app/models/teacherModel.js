@@ -6,7 +6,7 @@ const teacher = new mongoose.Schema(
       name: String,
       email: {
          type: String,
-         unique: true
+         unique: true,
       },
       password: String,
       isTeacher: Boolean,

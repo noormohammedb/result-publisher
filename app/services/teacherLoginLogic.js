@@ -1,21 +1,21 @@
-const bcrypt = require("bcrypt")
-const { signJwt } = require("../utils/createJwt")
-const TeacherModel = require("../models/teacherModel")
-const findTeacherEmail = require("../utils/findTeacherEmail")
+const bcrypt = require("bcrypt");
+const { signJwt } = require("../utils/createJwt");
+const findTeacherEmail = require("../utils/findTeacherEmail");
+
 module.exports = async (payload) => {
    const dbResFind = await findTeacherEmail(payload);
    if (dbResFind) {
       try {
          const matchPassword = await bcrypt.compare(payload.password, dbResFind.password);
          if (matchPassword) {
-            const token = signJwt(dbResFind)
+            const token = signJwt(dbResFind);
             return {
                statusCode: 200,
                json: {
                   status: true,
                   messae: "login success",
                   data: { token },
-               }
+               },
             };
          }
       } catch (error) {
@@ -30,7 +30,8 @@ module.exports = async (payload) => {
             status: false,
             messae: "email not registerd",
             data: {},
-         }
+         },
       };
    }
-}
+   return null;
+};
