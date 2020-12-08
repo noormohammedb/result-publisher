@@ -18,6 +18,16 @@ module.exports = async (payload) => {
                },
             };
          }
+         else {
+            return {
+               statusCode: 400,
+               json: {
+                  status: false,
+                  message: "password or email error",
+                  data: {},
+               },
+            };
+         }
       } catch (error) {
          console.log("error in login bcrypt compare operation");
          console.error(error);
@@ -28,7 +38,7 @@ module.exports = async (payload) => {
          statusCode: 400,
          json: {
             status: false,
-            message: "email not registerd",
+            message: "email or password error",
             data: {},
          },
       };

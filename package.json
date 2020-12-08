@@ -8,6 +8,9 @@
     "start": "node ./app/bin/www",
     "dev": "nodemon ./app/bin/www --inspect"
   },
+  "apidoc": {
+    "title": "result publication system"
+  },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",

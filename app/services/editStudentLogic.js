@@ -20,7 +20,7 @@ module.exports = async (payload) => {
             statusCode: 200,
             json: {
                status: true,
-               message: "student setails edited successfully",
+               message: "student details edited successfully",
                data: {},
             },
          };
