@@ -6,7 +6,7 @@ module.exports = async (payload) => {
       console.log(dbResFind);
       try {
          const dbRes = await StudentModel.updateOne(
-            { registerNumber: payload.registerNumber },
+            { registerNumber: payload.registerNumber, isRemoved: false },
             {
                $set: {
                   ...payload
@@ -30,7 +30,7 @@ module.exports = async (payload) => {
          console.error(error);
       }
    } else {
-      console.log("student not exist for exit");
+      console.log("student not exist for edit");
       return {
          statusCode: 400,
          json: {

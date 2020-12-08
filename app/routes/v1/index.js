@@ -1,6 +1,6 @@
 const app = require("express")();
 
-app.use("/", require("./publicRoute"));
+app.use("/", require("./resultRoute"));
 app.use("/signup", require("./teacherSignupRouter"));
 app.use("/login", require("./teacherLoginRoutet"));
 app.use("/add_student", require("./addStudentRouter"));
